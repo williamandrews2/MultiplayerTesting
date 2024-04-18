@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.Netcode;
 using UnityEngine;
 
-public class PlayerNetwork : MonoBehaviour
+public class PlayerNetwork : NetworkBehaviour
 {
     public float movementSpeed = 3;
 
@@ -15,6 +16,11 @@ public class PlayerNetwork : MonoBehaviour
  
     void Update()
     {
+        if(IsOwner)
+        {
+            return;
+        }
+
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
