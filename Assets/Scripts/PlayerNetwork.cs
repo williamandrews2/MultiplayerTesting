@@ -51,6 +51,14 @@ public class PlayerNetwork : NetworkBehaviour
         float horizontalInput = Input.GetAxis("Horizontal");
         float verticalInput = Input.GetAxis("Vertical");
 
+        // Keep player looking in the direction of travel
+        Vector3 movement = new Vector3(horizontalInput, 0.0f, verticalInput);
+
+        if(horizontalInput!=0 || verticalInput!=0)
+        {
+            transform.rotation = Quaternion.LookRotation(movement);
+        }
+
         // Update player position based on controls
         rb.velocity = new Vector3(horizontalInput * movementSpeed, rb.velocity.y, verticalInput * movementSpeed);
 
