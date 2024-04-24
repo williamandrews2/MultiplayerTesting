@@ -63,7 +63,6 @@ public class PlayerNetwork : NetworkBehaviour
     {
         Debug.Log("TestServerRpc " + OwnerClientId);
         spawnedObjectTransform = Instantiate(spawnedObjectPrefab);
-        Debug.Log("Ball should be spawning");
         spawnedObjectTransform.GetComponent<NetworkObject>().Spawn(true);
     }
 
